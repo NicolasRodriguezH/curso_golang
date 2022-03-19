@@ -1,31 +1,21 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
-
-func palindromo(text string) {
-	var alReves string
-
-	text = strings.ToLower(text)
-	for i := len(text) - 1; i >= 0; i-- {
-		alReves += string(text[i])
-	}
-
-	if text == alReves {
-		fmt.Println("Es palindrom")
-	} else {
-		fmt.Println("nockout")
-	}
-}
+import "fmt"
 
 func main() {
-	slice := []string{"hola", "que", "hace"}
+	m := make(map[string]int)
 
-	for _, valor := range slice {
-		fmt.Println(valor)
+	m["Jose"] = 14
+	m["Pepito"] = 20
+
+	fmt.Println(m)
+
+	// Recorrer map
+	for i, v := range m {
+		fmt.Println(i, v)
 	}
 
-	palindromo("Ojorojo")
+	// Encontrar un valor
+	value, ok := m["Jose"]
+	fmt.Println(value, ok)
 }
