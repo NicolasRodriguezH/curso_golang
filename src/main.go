@@ -2,35 +2,26 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"strconv"
 )
 
 func main() {
+	parImpar(4)
 
-	valor1 := 1
-	valor2 := 2
-
-	if valor1 == 1 {
-		fmt.Println("Es 1")
+	if verification("Nicolas", "12345") {
+		fmt.Println("Acceso permitido")
 	} else {
-		fmt.Println("No es 1")
+		fmt.Println("Acceso denegado")
 	}
+}
 
-	// With and
-	if valor1 == 1 && valor2 == 3 {
-		fmt.Println("Es verdad")
+func parImpar(value int) {
+	if value%2 == 0 {
+		fmt.Println("Es par")
+	} else {
+		fmt.Println("Es impar")
 	}
+}
 
-	// With or
-	if valor1 == 0 || valor2 == 2 {
-		fmt.Println("Es verdad, OR")
-	}
-
-	// Convertir texto a numero
-	value, err := strconv.Atoi("21")
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("Value: ", value)
+func verification(userName, pass string) bool {
+	return userName == "Nicolas" && pass == "123"
 }
