@@ -1,15 +1,15 @@
 package main
 
 import (
-	pk "curso_golang/src/mypackage"
-	"fmt"
+	"curso_golang/src/reto"
 )
 
 func main() {
-	var myCar pk.CarPublic
-	myCar.Marca = "Corsa"
-	myCar.Modelo = 2020
-	fmt.Println(myCar)
+	var newPc reto.Pc
+	newPc.Ram = 16
+	newPc.Disk = 221
+	newPc.Marca = "Razer"
 
-	pk.PrintMessage("Nnasjkbasjkab")
+	//fmt.Println(newPc)
+	newPc.DuplicateRam()
 }
