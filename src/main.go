@@ -1,19 +1,15 @@
 package main
 
-import "fmt"
-
-type car struct {
-	marca  string
-	modelo int
-}
+import (
+	pk "curso_golang/src/mypackage"
+	"fmt"
+)
 
 func main() {
-	myCar := car{marca: "Ford", modelo: 1997}
+	var myCar pk.CarPublic
+	myCar.Marca = "Corsa"
+	myCar.Modelo = 2020
 	fmt.Println(myCar)
 
-	// Otra manera
-	var otherCar car
-	otherCar.marca = "Mustang"
-	otherCar.modelo = 2022
-	fmt.Println(otherCar)
+	pk.PrintMessage("Nnasjkbasjkab")
 }
