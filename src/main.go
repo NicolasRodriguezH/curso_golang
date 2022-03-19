@@ -1,27 +1,24 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	parImpar(4)
 
-	if verification("Nicolas", "12345") {
-		fmt.Println("Acceso permitido")
-	} else {
-		fmt.Println("Acceso denegado")
+	switch modulo := 6 % 2; modulo {
+	case 0:
+		fmt.Println("Es par")
+	default:
+		fmt.Println("Es impar")
 	}
-}
 
-func parImpar(value int) {
-	if value%2 == 0 {
-		fmt.Println(value, "Es par")
-	} else {
-		fmt.Println(value, "Es impar")
+	//Sin condicion
+	value := 50
+	switch {
+	case value > 100:
+		fmt.Println("Es mayor a 100")
+	case value < 0:
+		fmt.Println("Es menor a 0")
+	default:
+		fmt.Println("No condicion")
 	}
-}
-
-func verification(userName, pass string) bool {
-	return userName == "Nicolas" && pass == "123"
 }
