@@ -1,15 +1,19 @@
 package main
 
-import (
-	"curso_golang/src/reto"
-)
+import "fmt"
+
+// pc pc para definir computadores
+type pc struct {
+	ram   int
+	disk  int
+	marca string
+}
+
+func (myCp pc) String() string {
+	return fmt.Sprintf("Tengo %d GB RAM, %d GB DISK y es una %s", myCp.ram, myCp.disk, myCp.marca)
+}
 
 func main() {
-	var newPc reto.Pc
-	newPc.Ram = 16
-	newPc.Disk = 221
-	newPc.Marca = "Razer"
-
-	//fmt.Println(newPc)
-	newPc.DuplicateRam()
+	myPc := pc{ram: 16, disk: 121, marca: "acme"}
+	fmt.Println(myPc)
 }
