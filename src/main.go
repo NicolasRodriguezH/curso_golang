@@ -16,9 +16,9 @@ func main() {
 
 func parImpar(value int) {
 	if value%2 == 0 {
-		fmt.Println("Es par")
+		fmt.Println(value, "Es par")
 	} else {
-		fmt.Println("Es impar")
+		fmt.Println(value, "Es impar")
 	}
 }
 
