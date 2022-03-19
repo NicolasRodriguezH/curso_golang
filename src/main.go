@@ -2,26 +2,30 @@ package main
 
 import (
 	"fmt"
+	"sync"
+	"time"
 )
 
+func say(text string, wg *sync.WaitGroup) {
+
+	defer wg.Done()
+
+	fmt.Println(text)
+}
+
 func main() {
-	parImpar(4)
+	var wg sync.WaitGroup
 
-	if verification("Nicolas", "12345") {
-		fmt.Println("Acceso permitido")
-	} else {
-		fmt.Println("Acceso denegado")
-	}
-}
+	fmt.Println("Hello")
+	wg.Add(1)
 
-func parImpar(value int) {
-	if value%2 == 0 {
-		fmt.Println(value, "Es par")
-	} else {
-		fmt.Println(value, "Es impar")
-	}
-}
+	go say("Word", &wg)
 
-func verification(userName, pass string) bool {
-	return userName == "Nicolas" && pass == "123"
+	wg.Wait()
+
+	go func(text string) {
+		fmt.Println(text)
+	}("Adios")
+
+	time.Sleep(time.Second * 1)
 }
