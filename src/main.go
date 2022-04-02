@@ -8,32 +8,45 @@ import (
 	"strings"
 )
 
-func main() {
-	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
-	operacion := scanner.Text()
-	fmt.Println(operacion)
-	operador := "/"
-	valores := strings.Split(operacion, operador)
-	fmt.Println(valores)
-	fmt.Println(valores[0] + valores[1])
-	operador1, err1 := strconv.Atoi(valores[0])
-	if err1 != nil {
-		fmt.Println(err1)
-	} else {
-		fmt.Println(operador1)
-	}
-	operador2, _ := strconv.Atoi(valores[1])
+type calc struct{}
+
+func (calc) operate(entrada string, operador string) int {
+	entradaLimpia := strings.Split(entrada, operador)
+	operador1 := parsear(entradaLimpia[0])
+	operador2 := parsear(entradaLimpia[1])
 	switch operador {
 	case "+":
 		fmt.Println(operador1 + operador2) // <-Este operador es el que ejecuta la operacion realmente
+		return operador1 + operador2
 	case "-":
 		fmt.Println(operador1 - operador2)
+		return operador1 - operador2
 	case "*":
 		fmt.Println(operador1 * operador2)
+		return operador1 * operador2
 	case "/":
 		fmt.Println(operador1 / operador2)
+		return operador1 / operador2
 	default:
 		fmt.Println("Valor no reconocido")
+		return 0
 	}
+}
+
+func parsear(entrada string) int {
+	operador, _ := strconv.Atoi(entrada)
+	return operador
+}
+
+func leerEntrada() string {
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	return scanner.Text()
+}
+
+func main() {
+	entrada := leerEntrada()
+	operador := leerEntrada()
+	c := calc{}
+	c.operate(entrada, operador)
 }
